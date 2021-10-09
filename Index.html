@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Er du synsk?</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <h1>Er du synsk?</h1> 
+
+    <div class="container">
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+
+
+
+
+
+
+</body>
+
+<script>
+
+//HTML-variables
+var box1Div = document.getElementById("box1-div");
+var box2Div = document.getElementById("box2-div");
+var numberOfLivesDiv = document.getElementById("number-of-lives-div");
+var numberRightAnswersDiv = document.getElementById("number-of-right-answers-div");
+var numberOfWrongAnswersDiv = document.getElementById("number-of-wrong-answers-div");
+var outputDiv = document.getElementById("output-div");
+
+// Variabler
+var numberOfLives = 5;
+var numberRightAnswers = 0;
+var numberWrongAnswers = 0;
+
+var box1;
+var box2;
+
+for (i = numberOfLives; i <= numberOfLives, i--;) {
+    numberOfLivesDiv.innerHTML += `<img src="">`;
+}
+
+function ActivateGame1() {
+    randomNumber = Math.floor(Math.random() * 2 + 1);
+
+    if (randomNumber === 1) {
+        box1 = true;
+        box2 = false;
+    } else {
+        box1 = false;
+        box2 = true;
+    }
+
+    console.log("random number is", randomNumber);
+
+    if (box1 === true) {
+        numberRightAnswers++;
+    }
+
+    if (box1 === false) {
+        numberWrongAnswers++;
+        numberOfLives--;
+    }
+
+    numberRightAnswersDiv.innerHTML = `Antall riktig: ${numberRightAnswers}`;
+    numberOfWrongAnswersDiv.innerHTML = `Antall feil: ${numberWrongAnswers}`;
+
+    console.log("Riktige svar:", numberRightAnswers);
+    console.log("Feil svar:", numberWrongAnswers);
+    console.log("Liv igjen:", numberOfLives);
+}
+
+function ActivateGame2() {
+    randomNumber = Math.floor(Math.random() * 2 + 1);
+
+    if (box2 === true) {
+        numberRightAnswers += 1;
+    }
+
+    if (box2 === false) {
+        numberWrongAnswers--;;
+        numberOfLives--;
+    }
+}
+
+// Events
+box1Div.onclick = ActivateGame1;
+box2Div.onclick = ActivateGame2;
+
+</script>
+</html>
